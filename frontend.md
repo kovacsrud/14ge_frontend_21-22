@@ -13,7 +13,7 @@ btn.onclick=function(){
 }
 
 btn.textContent='JS Gomb';
-document.getElementById('native-button-container').appendChild(btn);
+document.getElementById('js-button-container').appendChild(btn);
 ```
 ### React segítségével létrehozott gomb
 
@@ -25,4 +25,27 @@ const reactGomb=React.createElement('button',{
 },"React gomb");
 
 ReactDOM.render(reactGomb,document.getElementById('react-button-container'));
+```
+### Hozzuk működésbe!
+
+Először is kell egy HTML oldal. A HTML oldalban be kell majd tölteni a React könyvtárait , illetve betöltünk Bootstrap-et is, hogy a későbbi példákban tudjunk könnyedén stílusokat használni.
+```html
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8"> 
+    <title>React bemutatás</title>
+</head>
+<body>
+    <h2>Natív:</h2>
+    <div id='js-button-container'></div>
+    <h2>React:</h2>
+    <div id='react-button-container'></div>
+
+    
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
 ```
