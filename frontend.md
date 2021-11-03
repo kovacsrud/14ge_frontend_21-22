@@ -49,3 +49,25 @@ Először is kell egy HTML oldal. A HTML oldalban be kell majd tölteni a React 
 </body>
 </html>
 ```
+A két div elem két belépési pontot jelent, az egyikhez a hagyományos, natív kódot rendeljük, a másikhoz a React kódot. A kódot egy **app.js** fájlba tegyük bele.
+
+```js
+const btn=document.createElement('button');
+btn.onclick=function(){
+    alert('Js button');
+}
+
+btn.textContent='Js Gomb';
+document.getElementById('js-button-container').appendChild(btn);
+
+//React
+
+const reactGomb=React.createElement('button',{
+    onClick:function(){
+        alert('React button');
+    }
+},"React gomb");
+
+ReactDOM.render(reactGomb,document.getElementById('react-button-container'));
+
+```
