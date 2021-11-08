@@ -119,3 +119,22 @@ Cross-fetch
 ```js
 npm install --save cross-fetch
 ```
+A kiinduló konfigurációja a szervernek:
+```js
+const express=require('express');
+const cors=require('cors');
+const app=express();
+const sqlite3=require('sqlite3');
+const  db_alldata  = require('./dbfunc');
+const db=new sqlite3.Database('./autok.db');
+
+app.use(cors());
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+app.listen(8000,()=>{console.log('A szerver fut')});
+
+app.get('/',(req,res)=>{
+    res.send('Autók adatbázis');
+});
+```
