@@ -8,6 +8,14 @@ const ujauto={
     gyartasiev:2009
 }
 
+const modauto={
+    rendszam:"ckt-556",
+    marka:"Kia",
+    tipus:"Rio",
+    szin:"fekete",
+    gyartasiev:2008
+}
+
 async function ujadat(){
 
     const res=await fetch('http://127.0.0.1:8000/ujauto',{
@@ -22,4 +30,26 @@ async function ujadat(){
 
 }
 
-ujadat();
+async function adatModositas(){
+    const res=await fetch('http://127.0.0.1:8000/updateauto',{
+        method:"put",
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(modauto)
+    });
+    const valasz=await res.json();
+    console.log(valasz);
+}
+
+async function adatTorles(){
+    const res=await fetch('http://127.0.0.1:8000/deleteauto',{
+        method:"delete",
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(modauto)
+    });
+    const valasz=await res.json();
+    console.log(valasz);
+}
+
+adatTorles();
+//adatModositas();
+//ujadat();

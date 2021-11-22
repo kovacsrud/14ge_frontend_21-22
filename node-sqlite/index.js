@@ -42,3 +42,30 @@ app.post('/ujauto',(req,res)=>{
     }
     );
 });
+
+app.put('/updateauto',(req,res)=>{
+    db.run("update autok set marka=?,tipus=?,szin=?,gyartasiev=? where rendszam=?",
+    [req.body.marka,
+    req.body.tipus,
+    req.body.szin,
+    req.body.gyartasiev,
+    req.body.rendszam],
+    error=>{
+        if(error){
+            res.send(error);
+        } else {
+            res.status(200).json({status:'Ok',message:'Módosítás rendben'});
+        }
+    });
+});
+
+app.delete('/deleteauto',(req,res)=>{
+    db.run("delete from autok where rendszam=?",[req.body.rendszam],error=>{
+            if(error){
+                res.send(error);
+            }else {
+                res.status(200).json({status:'Ok',message:'Autó törölve!'});
+            }
+
+    });
+});
